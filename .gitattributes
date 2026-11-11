@@ -1,0 +1,13 @@
+# Normalize line endings; keep the shell and SQL files LF everywhere.
+* text=auto eol=lf
+*.bat text eol=crlf
+
+# Byte-exact files: never touch their line endings.
+sample/** -text
+gen/fonts/licenses/* -text
+gen/fonts/*.ttf binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.gz binary
+*.zip binary

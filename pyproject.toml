@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "retrieval-engineering"
+version = "0.1.0"
+description = "Companion code for the book Retrieval Engineering"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [{name = "Ahsan Iqbal"}]
+requires-python = ">=3.12"
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Text Processing :: Indexing",
+]
+dependencies = [
+    "psycopg[binary]>=3.2",
+    "pgvector>=0.3",
+    "numpy",
+    "scikit-learn",
+    "pypdf>=5.9,<6",   # newer versions extract some PDF text differently
+    "pyyaml>=6",       # rx.ledger reads its prices from rx/prices.yaml
+    "tiktoken>=0.9",   # real token counts (o200k_base), rx.textutil
+]
+
+[project.urls]
+Repository = "https://github.com/AiKoushik/retrieval-engineering"
+Issues = "https://github.com/AiKoushik/retrieval-engineering/issues"
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+# trained embedders (rx.embed.SentenceTransformerEmbedder)
+models = ["sentence-transformers"]
+# hosted language models (rx.llm.AnthropicLLM, rx.llm.OpenAILLM)
+llm = ["anthropic", "openai"]
+
+[tool.setuptools]
+packages = ["rx"]
+
+[tool.setuptools.package-data]
+rx = ["prices.yaml", "labels/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
