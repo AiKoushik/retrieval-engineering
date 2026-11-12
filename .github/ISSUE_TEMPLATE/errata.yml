@@ -1,0 +1,58 @@
+name: Errata
+description: Something in the book is wrong or unclear.
+title: "Errata: "
+labels: ["errata"]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Thank you for reporting it. Please say where it is, so it can be
+        found and fixed quickly.
+  - type: dropdown
+    id: book
+    attributes:
+      label: Book
+      options:
+        - "Book 1: Foundations, Ingestion, Extraction"
+        - "Book 2: Reranking, Citations, Evaluation, Scale"
+        - "Book 3: Conversations, Images, Agents, Security, Operations"
+    validations:
+      required: true
+  - type: input
+    id: chapter
+    attributes:
+      label: Chapter
+      placeholder: "e.g. 3, The scoreboard"
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Page or section
+      placeholder: "e.g. page 87, or section 3.4, Listing 3.2"
+    validations:
+      required: true
+  - type: dropdown
+    id: edition
+    attributes:
+      label: Edition
+      options:
+        - Print
+        - Ebook (PDF or EPUB)
+        - Web
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: says
+    attributes:
+      label: What it says
+      description: Quote the sentence, number or listing line.
+    validations:
+      required: true
+  - type: textarea
+    id: should
+    attributes:
+      label: What you expected, and why
+    validations:
+      required: true

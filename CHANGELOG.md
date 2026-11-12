@@ -9,3 +9,5 @@ the project uses [Semantic Versioning](https://semver.org/).
 ### Added
 
 - Packaging, license, and the first README.
+- Contribution guide, code of conduct and security policy; issue forms
+  for errata, bugs and questions.

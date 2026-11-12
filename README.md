@@ -17,6 +17,12 @@ learn retrieval from the ground up.
 The repository grows chapter by chapter as the book is finalized; the
 [changelog](CHANGELOG.md) lists what is here so far.
 
+## Errata and issues
+
+Found a mistake in the book or a bug in the code? Please open an
+issue: there are forms for [errata][new-issue] (with the chapter and
+page), bugs and questions.
+
 ## Contributing
 
 Bug fixes are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). The
@@ -30,3 +36,4 @@ The code is licensed under the [Apache License 2.0](LICENSE).
 
 [license-badge]: https://img.shields.io/badge/license-Apache--2.0-blue
 [python-badge]: https://img.shields.io/badge/python-3.13-blue
+[new-issue]: ../../issues/new/choose
