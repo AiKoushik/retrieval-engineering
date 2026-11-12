@@ -17,6 +17,13 @@ learn retrieval from the ground up.
 The repository grows chapter by chapter as the book is finalized; the
 [changelog](CHANGELOG.md) lists what is here so far.
 
+## Contributing
+
+Bug fixes are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). The
+code follows the book, so changes that would change a printed number
+start with an issue. This project follows the
+[Contributor Covenant](CODE_OF_CONDUCT.md).
+
 ## License
 
 The code is licensed under the [Apache License 2.0](LICENSE).
