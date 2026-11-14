@@ -17,6 +17,22 @@ learn retrieval from the ground up.
 The repository grows chapter by chapter as the book is finalized; the
 [changelog](CHANGELOG.md) lists what is here so far.
 
+## Repository layout
+
+```
+rx/              the package: one module per idea
+requirements.lock  the exact library versions the book used
+```
+
+Run every command from the repository root.
+
+## Running the tests
+
+```sh
+make test         # every test; Postgres tests use RX_TEST_DSN
+```
+
+
 ## Errata and issues
 
 Found a mistake in the book or a bug in the code? Please open an

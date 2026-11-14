@@ -18,7 +18,12 @@ help:                   ## list the targets
 	  sed -E 's/:[^#]*## /\t/' | expand -t 18
 
 install:                ## the exact library versions, then this code
-	$(PYTHON) -m pip install -e .
+	$(PYTHON) -m pip install -r requirements.lock
+	$(PYTHON) -m pip install --no-deps -e .
+
+.PHONY: test
+test:                   ## every test (Postgres tests need RX_TEST_DSN)
+	$(PYTHON) -m pytest -q
 
 clean:                  ## caches and build output (never data/)
 	rm -rf .pytest_cache .ruff_cache build

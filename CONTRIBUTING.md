@@ -34,6 +34,16 @@ fixed in the book and, where the code is involved, here.
 - Keep the plain style: standard library and the pinned libraries in
   `requirements.lock`, no framework.
 
+## Tests
+
+```sh
+make test         # every test; Postgres tests use RX_TEST_DSN
+```
+
+The tests must pass before a change is merged.
+Tests that read the desk set or the generator's worlds skip when they
+are not available; say in the pull request whether you ran them.
+
 ## License
 
 By contributing, you agree that your contributions are licensed under
