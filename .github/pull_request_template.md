@@ -4,5 +4,6 @@
 
 ## Checks
 
-- [ ] the tests pass
+- [ ] `make test-fast` passes
+- [ ] `make test` passes with Postgres (or: not run, and why)
 - [ ] No number the book prints changes (or: the issue that agreed it)

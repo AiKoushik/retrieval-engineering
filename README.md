@@ -17,10 +17,26 @@ learn retrieval from the ground up.
 The repository grows chapter by chapter as the book is finalized; the
 [changelog](CHANGELOG.md) lists what is here so far.
 
+## Setup without Docker
+
+You need Python 3.12 or newer (the book uses 3.13) and PostgreSQL 15
+or newer with pgvector 0.8 or newer.
+
+```sh
+python -m venv .venv && . .venv/bin/activate
+pip install -r requirements.lock      # the versions the book used
+pip install --no-deps -e .            # this package
+export RX_DSN=postgresql://postgres@localhost:5432/rx
+export RX_TEST_DSN=postgresql://postgres@localhost:5432/rx_test
+make db                               # create rx and rx_test
+```
+
 ## Repository layout
 
 ```
 rx/              the package: one module per idea
+sql/             schema files, applied in name order
+tests/           pytest suite; tests marked `db` need Postgres
 requirements.lock  the exact library versions the book used
 ```
 
@@ -29,9 +45,12 @@ Run every command from the repository root.
 ## Running the tests
 
 ```sh
+make test-fast    # fast tests: no database, no generator runs
 make test         # every test; Postgres tests use RX_TEST_DSN
 ```
 
+The test database is reset by the tests: never point `RX_TEST_DSN` at
+a database you want to keep.
 
 ## Errata and issues
 

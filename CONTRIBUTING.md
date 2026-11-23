@@ -28,6 +28,7 @@ fixed in the book and, where the code is involved, here.
 - Printed files stay within 76 characters a line: every `.py`, `.sql`,
   `.md`, `.toml` and `.yml` file and the Makefile, because the book
   prints them.
+  `tests/test_style.py` enforces it.
 - Listings are cut from the code between `# region: <name>` and
   `# endregion: <name>` lines; keep those markers on their own lines
   and balanced.
@@ -37,6 +38,7 @@ fixed in the book and, where the code is involved, here.
 ## Tests
 
 ```sh
+make test-fast    # fast tests: no database, no generator runs
 make test         # every test; Postgres tests use RX_TEST_DSN
 ```
 

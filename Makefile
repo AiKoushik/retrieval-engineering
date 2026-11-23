@@ -25,5 +25,23 @@ install:                ## the exact library versions, then this code
 test:                   ## every test (Postgres tests need RX_TEST_DSN)
 	$(PYTHON) -m pytest -q
 
+.PHONY: test-fast db drop-scratch
+test-fast:              ## fast tests: no database, no generator runs
+	$(PYTHON) -m pytest -q -m "not db and not slow"
+
+db:                     ## create the empty databases rx and rx_test
+	for name in rx rx_test; do \
+	  $(PSQL) -d postgres -tc \
+	    "SELECT 1 FROM pg_database WHERE datname = '$$name'" \
+	    | grep -q 1 || $(PSQL) -d postgres -c "CREATE DATABASE $$name"; \
+	done
+
+drop-scratch:           ## drop the scratch databases (never rx, rx_test)
+	for name in $$($(PSQL) -d postgres -Atc "SELECT datname FROM \
+	    pg_database WHERE datname ~ '$(SCRATCH)'"); do \
+	  echo "dropping $$name"; \
+	  $(PSQL) -d postgres -c "DROP DATABASE $$name"; \
+	done
+
 clean:                  ## caches and build output (never data/)
 	rm -rf .pytest_cache .ruff_cache build
