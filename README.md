@@ -31,12 +31,16 @@ export RX_TEST_DSN=postgresql://postgres@localhost:5432/rx_test
 make db                               # create rx and rx_test
 ```
 
+To run only the database in Docker: `docker compose up -d db`, then
+the exports above (the image creates both databases).
+
 ## Repository layout
 
 ```
 rx/              the package: one module per idea
 sql/             schema files, applied in name order
 tests/           pytest suite; tests marked `db` need Postgres
+docker/          Dockerfiles: postgres/ (database), lab/ (Python)
 requirements.lock  the exact library versions the book used
 ```
 
@@ -51,6 +55,16 @@ make test         # every test; Postgres tests use RX_TEST_DSN
 
 The test database is reset by the tests: never point `RX_TEST_DSN` at
 a database you want to keep.
+
+## Pinned versions
+
+| Component | Version |
+|---|---|
+| Python | 3.13.18 (lab image; 3.12 or newer works) |
+| PostgreSQL | 18.6 |
+| pgvector | 0.8.7 |
+| pg_textsearch | 1.4.0 (optional: BM25 falls back to SQL) |
+| Python libraries | `requirements.lock` |
 
 ## Errata and issues
 

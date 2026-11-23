@@ -1,0 +1,23 @@
+# The book's database, with pinned versions:
+#   db   PostgreSQL 18.6 + pgvector 0.8.7 + pg_textsearch 1.4.0
+#        (docker/postgres/Dockerfile)
+#
+#   docker compose up -d db               # build and start Postgres
+services:
+  db:
+    build: docker/postgres
+    image: retrieval-engineering/db:18.6-pgvector0.8.7-textsearch1.4.0
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - rxdata:/var/lib/postgresql   # PostgreSQL 18's data layout
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  rxdata:
